@@ -1,4 +1,5 @@
 let currentPokemon;
+let AUDIO_FRONTPAGE = new Audio('./audio/frontpage/poke_center.mp3');
 
 async function loadPokedex() {
     let url = 'https://pokeapi.co/api/v2/pokemon/charmander';
@@ -19,11 +20,12 @@ function showStartAnimation() {
     let bottom = document.getElementById('frontPageBottom');
     top.classList.add('animation-go-up');
     bottom.classList.add('animation-go-down');
+    AUDIO_FRONTPAGE.play();
     setTimeout(deleteFrontPage, 2500);
 }
 
 function renderPokedex() {
-
+    
 }
 
 function deleteFrontPage() {
@@ -31,4 +33,5 @@ function deleteFrontPage() {
     let bottom = document.getElementById('frontPageBottom');
     top.classList.add('d-none');
     bottom.classList.add('d-none');
+    document.getElementById('body').classList.remove('overflow');
 }
