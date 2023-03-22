@@ -18,11 +18,10 @@ body {
     z-index: 1;
     padding: 22px;
     opacity: 1;
-    background-image: url('img/pokeball_bg.png');
-    background-size: 90px 90px;
+    background-image: url('img/pokeball_bg_grey_3.png');
+    background-size: 200px 200px;
     overflow: hidden;
     position: relative;
-
 }
 
 .main-content:before {
@@ -38,7 +37,6 @@ body {
     width: 200%;
     border: 3px solid black;
     border-radius: 100%;
-
 }
 
 .frontpage {
@@ -279,8 +277,8 @@ body {
 }
 
 .poke-card {
-    height: 270px;
-    width: 210px;
+    height: 240px;
+    width: 180px;
     margin: 11px;
     border: 4px solid rgb(207, 0, 0);
     border-radius: 15px;
@@ -294,11 +292,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
 }
 
 .card-top-section {
-    height: 40%;
+    height: 50%;
     width: 100%;
     background-color: #0a0066;
     border-top-left-radius: 10px;
@@ -306,7 +303,7 @@ body {
 }
 
 .card-bottom-section {
-    height: 60%;
+    height: 50%;
     width: 100%;
     background-color: #7a00ff;
     border-bottom-left-radius: 10px;
@@ -318,11 +315,13 @@ h3 {
     color: white;
     padding: 25px;
     font-size: 1.4em;
+    text-transform: capitalize;
 }
 
 .poke-card img {
     position: absolute;
-    height: 65px;
-    width: 65px;
-    top: 70px !important;
+    height: 105px;
+    width: 105px;
+    bottom: 25px !important;
+    right: 10px;
 }

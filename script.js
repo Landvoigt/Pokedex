@@ -1,12 +1,105 @@
 let currentPokemon;
 let AUDIO_FRONTPAGE = new Audio('./audio/frontpage/poke_center.mp3');
+let types = [
+    {
+        "type": "normal",
+        "color": "white"
+    }
+    ,
+    {
+        "type": "fighting",
+        "color": "orange"
+    }
+    ,
+    {
+        "type": "flying",
+        "color": "lightblue"
+    }
+    ,
+    {
+        "type": "poison",
+        "color": "purple"
+    }
+    ,
+    {
+        "type": "ground",
+        "color": "brown"
+    }
+    ,
+    {
+        "type": "rock",
+        "color": "grey"
+    }
+    ,
+    {
+        "type": "bug",
+        "color": "lightgreen"
+    }
+    ,
+    {
+        "type": "ghost",
+        "color": "lightyellow"
+    }
+    ,
+    {
+        "type": "steel",
+        "color": "silver"
+    }
+    ,
+    {
+        "type": "fire",
+        "color": "red"
+    }
+    ,
+    {
+        "type": "water",
+        "color": "blue"
+    }
+    ,
+    {
+        "type": "grass",
+        "color": "green"
+    }
+    ,
+    {
+        "type": "electric",
+        "color": "yellow"
+    }
+    ,
+    {
+        "type": "psychic",
+        "color": "rosa"
+    }
+    ,
+    {
+        "type": "ice",
+        "color": "turkis"
+    }
+    ,
+    {
+        "type": "dragon",
+        "color": "darkblue"
+    }
+    ,
+    {
+        "type": "dark",
+        "color": "black"
+    }
+    ,
+    {
+        "type": "fairy",
+        "color": "noir"
+    }
+]
 
 async function loadPokedex() {
-    let url = 'https://pokeapi.co/api/v2/pokemon/charmander';
-    let response = await fetch(url);
-    currentPokemon = await response.json();
-    console.log(currentPokemon);
-    renderPokedex();
+    for (let i = 1; i < 150; i++) {
+        let pokemonURL = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        let response = await fetch(pokemonURL);
+        pokemons = await response.json();
+        variables(pokemons);
+    }
+    console.log(pokemons);
     showStartButton();
 }
 
@@ -24,8 +117,73 @@ function showStartAnimation() {
     setTimeout(deleteFrontPage, 2500);
 }
 
-function renderPokedex() {
-    
+function variables(pokemons) {
+    let name = pokemons['name'];
+    let pic = pokemons['sprites']['other']['home']['front_default'];
+    let card = document.getElementById('mainContent');
+    if (pokemons['types'].length == 1) {
+        let type_1 = pokemons['types'][0]['type']['name'];
+        updateTypeColorSingular(name, pic, type_1, card);
+    } else {
+        let type_1 = pokemons['types'][0]['type']['name'];
+        let type_2 = pokemons['types'][1]['type']['name'];
+        updateTypeColorMultiple(name, pic, type_1, type_2, card);
+    }
+}
+
+
+function updateTypeColorSingular(name, pic, type_1, card) {
+    for (let i = 0; i < types.length; i++) {
+        let color = types[i]['type'];
+        let typecolor = types[i]['color'];
+        if (type_1 == color) {
+            renderPokemon(name, pic, card, typecolor)
+        }
+    }
+}
+
+function updateTypeColorMultiple(name, pic, type_1, type_2, card) {
+    for (let i = 0; i < types.length; i++) {
+        let firstcolor = types[i]['type'];
+        if (type_1 == firstcolor) {
+            let typecolor1 = types[i]['color'];
+            for (let j = 0; j < types.length; j++) {
+                let secondcolor = types[j]['type'];
+                if (type_2 == secondcolor) {
+                    let typecolor2 = types[j]['color'];
+                    renderPokemon2(name, pic, card, typecolor1, typecolor2);
+                }
+            }
+        }
+    }
+}
+
+function renderPokemon(name, pic, card, typecolor) {
+    card.innerHTML += `
+        <div class="poke-card">
+            <img src="${pic}">
+            <div class="card-top-section" style="background-color: ${typecolor}">
+                <h3>${name}</h3>
+            </div>
+            <div class="card-bottom-section" style="background-color: ${typecolor}">
+            
+            </div>
+        </div>
+    `;
+}
+
+function renderPokemon2(name, pic, card, typecolor1, typecolor2) {
+    card.innerHTML += `
+        <div class="poke-card">
+            <img src="${pic}">
+            <div class="card-top-section" style="background-color: ${typecolor1}">
+                <h3>${name}</h3>
+            </div>
+            <div class="card-bottom-section" style="background-color: ${typecolor2}">
+            
+            </div>
+        </div>
+    `;
 }
 
 function deleteFrontPage() {
