@@ -93,7 +93,7 @@ let types = [
 ]
 
 async function loadPokedex() {
-    for (let i = 1; i < 150; i++) {
+    for (let i = 1; i < 50; i++) {
         let pokemonURL = `https://pokeapi.co/api/v2/pokemon/${i}`;
         let response = await fetch(pokemonURL);
         pokemons = await response.json();
@@ -131,13 +131,12 @@ function variables(pokemons) {
     }
 }
 
-
 function updateTypeColorSingular(name, pic, type_1, card) {
     for (let i = 0; i < types.length; i++) {
         let color = types[i]['type'];
         let typecolor = types[i]['color'];
         if (type_1 == color) {
-            renderPokemon(name, pic, card, typecolor)
+            renderPokemon(name, pic, type_1, card, typecolor)
         }
     }
 }
@@ -151,19 +150,28 @@ function updateTypeColorMultiple(name, pic, type_1, type_2, card) {
                 let secondcolor = types[j]['type'];
                 if (type_2 == secondcolor) {
                     let typecolor2 = types[j]['color'];
-                    renderPokemon2(name, pic, card, typecolor1, typecolor2);
+                    renderPokemon2(name, pic, type_1, type_2, card, typecolor1, typecolor2);
                 }
             }
         }
     }
 }
 
-function renderPokemon(name, pic, card, typecolor) {
+function renderPokemon(name, pic, type_1, card, typecolor) {
+    let index = pokemons['id'];
+    if (index <= 10) {
+        index = '00' + index;
+    }
+    if (index > 9 && index < 100) {
+        index = '0' + index;
+    }
     card.innerHTML += `
         <div class="poke-card">
             <img src="${pic}">
             <div class="card-top-section" style="background-color: ${typecolor}">
                 <h3>${name}</h3>
+                <i class="index-number"> #${index}</i>
+                <span class="type-small-image pt-39">${type_1}</span>
             </div>
             <div class="card-bottom-section" style="background-color: ${typecolor}">
             
@@ -172,15 +180,24 @@ function renderPokemon(name, pic, card, typecolor) {
     `;
 }
 
-function renderPokemon2(name, pic, card, typecolor1, typecolor2) {
+function renderPokemon2(name, pic, type_1, type_2, card, typecolor1, typecolor2) {
+    let index = pokemons['id'];
+    if (index <= 10) {
+        index = '00' + index;
+    }
+    if (index > 9 && index < 100) {
+        index = '0' + index;
+    }
     card.innerHTML += `
         <div class="poke-card">
             <img src="${pic}">
             <div class="card-top-section" style="background-color: ${typecolor1}">
                 <h3>${name}</h3>
+                <i class="index-number"> #${index}</i>
+                <span class="type-small-image pt-39">${type_1}</span>
             </div>
             <div class="card-bottom-section" style="background-color: ${typecolor2}">
-            
+                <span class="type-small-image pt-5">${type_2}</span>
             </div>
         </div>
     `;
