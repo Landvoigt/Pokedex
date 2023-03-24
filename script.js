@@ -3,97 +3,97 @@ let AUDIO_FRONTPAGE = new Audio('./audio/frontpage/poke_center.mp3');
 let types = [
     {
         "type": "normal",
-        "color": "white"
+        "color": "#d1d0ce"
     }
     ,
     {
         "type": "fighting",
-        "color": "orange"
+        "color": "#e17c45"
     }
     ,
     {
         "type": "flying",
-        "color": "lightblue"
+        "color": "#afd2ef"
     }
     ,
     {
         "type": "poison",
-        "color": "purple"
+        "color": "#9c53b7"
     }
     ,
     {
         "type": "ground",
-        "color": "brown"
+        "color": "#8b6449"
     }
     ,
     {
         "type": "rock",
-        "color": "grey"
+        "color": "#b7a681"
     }
     ,
     {
         "type": "bug",
-        "color": "lightgreen"
+        "color": "#c1d15c"
     }
     ,
     {
         "type": "ghost",
-        "color": "lightyellow"
+        "color": "#5B4964"
     }
     ,
     {
         "type": "steel",
-        "color": "silver"
+        "color": "#8E8E92"
     }
     ,
     {
         "type": "fire",
-        "color": "red"
+        "color": "#d52222"
     }
     ,
     {
         "type": "water",
-        "color": "blue"
+        "color": "#2d9be3"
     }
     ,
     {
         "type": "grass",
-        "color": "green"
+        "color": "#4ac530"
     }
     ,
     {
         "type": "electric",
-        "color": "yellow"
+        "color": "#ffcf00"
     }
     ,
     {
         "type": "psychic",
-        "color": "rosa"
+        "color": "#ff5767"
     }
     ,
     {
         "type": "ice",
-        "color": "turkis"
+        "color": "#5eedea"
     }
     ,
     {
         "type": "dragon",
-        "color": "darkblue"
+        "color": "#4567A1"
     }
     ,
     {
         "type": "dark",
-        "color": "black"
+        "color": "#4b484e"
     }
     ,
     {
         "type": "fairy",
-        "color": "noir"
+        "color": "#f381a8"
     }
 ]
 
 async function loadPokedex() {
-    for (let i = 1; i < 60; i++) {
+    for (let i = 1; i < 100; i++) {
         let pokemonURL = `https://pokeapi.co/api/v2/pokemon/${i}`;
         let response = await fetch(pokemonURL);
         pokemons = await response.json();
@@ -168,9 +168,7 @@ function renderPokemon(name, pic, type_1, card, typecolor) {
     card.innerHTML += `
         <div class="poke-card">
             <img src="${pic}">
-            <div class="card-bg-left" style="background-color: ${typecolor}">
-            </div>
-            <div class="card-bg-right" style="background-color: ${typecolor}">
+            <div class="card-bg-one-type" style="background-color: ${typecolor}">
             </div>
             <div class="card-text">
                 <div class="card-text-top">
