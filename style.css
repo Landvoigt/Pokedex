@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    z-index: 0;
 }
 
 /* .overflow {
@@ -8,6 +7,7 @@ body {
 } */
 
 .main-content {
+    z-index: 0;
     background-color: rgb(230, 243, 255);
     min-height: 100vh;
     height: auto;
@@ -282,72 +282,85 @@ body {
     margin: 11px;
     border: 4px solid rgb(207, 0, 0);
     border-radius: 15px;
-    background-color: #ffffff;
     border-style: ridge;
     -webkit-box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.6);
     box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.6);
     opacity: 1;
     position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.card-top-section {
-    height: 50%;
+.card-text {
+    height: 100%;
     width: 100%;
-    background-color: #0a0066;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-around;
+    position: absolute;
+    z-index: 4;
 }
 
-.card-bottom-section {
-    height: 50%;
+.card-text-top {
     width: 100%;
-    background-color: #7a00ff;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    height: 50%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
+}
+
+.card-text-bottom {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 h3 {
-    margin-top: 0;
+    width: 100%;
+    margin-top: 4px;
     margin-bottom: 2px;
     color: white;
     font-size: 1.5em;
     text-transform: capitalize;
-    padding-left: 14px;
-    padding-top: 14px;
+}
+
+.mt-40 {
+    margin-top: 40px !important;
 }
 
 .poke-card img {
     position: absolute;
-    height: 105px;
-    width: 105px;
-    bottom: 25px !important;
-    right: 10px;
+    z-index: 99;
+    height: 120px;
+    width: 120px;
+    top: 60px;
 }
 
 .index-number {
-    color: white;
+    width: 100%;
+    color: rgb(0, 0, 0);
     font-size: 14px;
     font-weight: 200;
-    padding-left: 14px;
+    margin-bottom: 4px;
 }
 
-.type-small-image{
+.type-small-image {
     color: white;
     font-size: 15px;
     font-weight: 400;
-    margin-left: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     padding-bottom: 2px;
     padding-top: 1px;
     padding-left: 6px;
@@ -356,10 +369,31 @@ h3 {
     background-color: #ffffff75;
 }
 
-.pt-39{
-    margin-top: 37px;
+.text-center {
+    text-align: center !important;
 }
 
-.pt-5{
-    margin-top: 4px;
+.card-bg-left {
+    z-index: 0;
+    position: absolute;
+    width: 220%;
+    height: 220%;
+    top: 0;
+    left: 0;
+    background: red;
+    transform: rotate(36deg) translate(-90%);
+}
+
+.card-bg-right {
+    z-index: 0;
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    bottom: 0;
+    right: 9px;
+    background: yellow;
+    transform: rotate(36deg) translate(90%);
+    --mask: conic-gradient(from 60deg at left, #0000, #000 1deg 59deg, #0000 60deg) 50%/100% 15.01px;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
 }
