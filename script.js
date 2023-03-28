@@ -91,12 +91,11 @@ let types = [
         "color": "#f381a8"
     }
 ]
-
 let pokemonArray = [];
 
 async function loadPokedex() {
     pokemonArray.length = 0;
-    for (let x = 1; x < 20; x++) {
+    for (let x = 1; x < 10; x++) {
         let pokemonURL = `https://pokeapi.co/api/v2/pokemon/${x}`;
         let response = await fetch(pokemonURL);
         pokemon = await response.json();
@@ -107,6 +106,8 @@ async function loadPokedex() {
 }
 
 function showStartButton() {
+    let loading = document.getElementById('loadingSymbol');
+    loading.classList.add('d-none');
     let btn = document.getElementById('startButton');
     btn.classList.remove('d-none');
 }
@@ -177,7 +178,7 @@ function renderPokemon(name, pic, type_1, card, typecolor, x) {
         index = '0' + index;
     }
     card.innerHTML += `
-        <div class="poke-card" onclick="showBigPokemonCard(${x})">
+        <div class="poke-card" onclick="loadBigPokemonCards(${x})">
             <img src="${pic}" class="small-pokemon-img">
             <div class="card-bg-one-type" style="background-color: ${typecolor}"></div>
             <div class="card-text">
@@ -204,7 +205,7 @@ function renderPokemon2(name, pic, type_1, type_2, card, typecolor1, typecolor2,
         index = '0' + index;
     }
     card.innerHTML += `
-        <div class="poke-card" onclick="showBigPokemonCard(${x})">
+        <div class="poke-card" onclick="loadBigPokemonCards(${x})">
             <img src="${pic}" class="small-pokemon-img">
             <div class="card-bg-left" style="background-color: ${typecolor1}"></div>
             <div class="card-bg-right" style="background-color: ${typecolor2}"></div>
@@ -225,6 +226,16 @@ function renderPokemon2(name, pic, type_1, type_2, card, typecolor1, typecolor2,
 
 function pushPokemonDetailsInJSON(x, name, index, pic, type_1, type_2, typecolor1, typecolor2) {
     let shinyPic = pokemon['sprites']['other']['dream_world']['front_default'];
+    let height = pokemon['height'];
+    let weight = pokemon['weight'];
+    let experience = pokemon['base_experience'];
+    let stat_hp = pokemon['stats'][0]['base_stat'];
+    let stat_attack = pokemon['stats'][1]['base_stat'];
+    let stat_defense = pokemon['stats'][2]['base_stat'];
+    let stat_specialattack = pokemon['stats'][3]['base_stat'];
+    let stat_specialdefense = pokemon['stats'][4]['base_stat'];
+    let stat_speed = pokemon['stats'][5]['base_stat'];
+    // let abilities = [];
     let data = {
         'url': `https://pokeapi.co/api/v2/pokemon/${x}`,
         'name': name,
@@ -234,50 +245,69 @@ function pushPokemonDetailsInJSON(x, name, index, pic, type_1, type_2, typecolor
         'type2': type_2,
         'typecolor1': typecolor1,
         'typecolor2': typecolor2,
-        'shinyPic': shinyPic
+        'shinyPic': shinyPic,
+        'height': height,
+        'weight': weight,
+        'base_experience': experience,
+        'hp': stat_hp,
+        'attack': stat_attack,
+        'defense': stat_defense,
+        'speed': stat_speed,
+        'specialattack': stat_specialattack,
+        'specialdefense': stat_specialdefense
     }
     pokemonArray.push(data);
 }
 
 
-function showBigPokemonCard(x) {
-    // console.log(x);
+function loadBigPokemonCards(x) {
     document.getElementById(`bigCardWindow`).classList.remove('d-none');
     if (x == 1) {
-        document.getElementById('bigCardLeft').classList.add('d-none');
-        let main = document.getElementById(`bigCardMain`);
-        let numberPokemonMiddle = x - 1;
-        loadPokemonsDetails(numberPokemonMiddle, main);
-        let right = document.getElementById(`bigCardRight`);
-        let numberPokemonRight = x;
-        loadPokemonsDetails(numberPokemonRight, right);
+        hideBigLeftCard(x);
     }
     if (x == pokemonArray.length) {
-        let left = document.getElementById(`bigCardLeft`);
-        let numberPokemonLeft = x - 2;
-        loadPokemonsDetails(numberPokemonLeft, left);
-        let main = document.getElementById(`bigCardMain`);
-        let numberPokemonMiddle = x - 1;
-        loadPokemonsDetails(numberPokemonMiddle, main);
-        document.getElementById('bigCardRight').classList.add('d-none');
-
+        hideBigRightCard(x);
     }
     if (x > 1 && x < pokemonArray.length) {
-        document.getElementById('bigCardLeft').classList.remove('d-none');
-        let left = document.getElementById(`bigCardLeft`);
-        let numberPokemonLeft = x - 2;
-        loadPokemonsDetails(numberPokemonLeft, left);
-        let main = document.getElementById(`bigCardMain`);
-        let numberPokemonMiddle = x - 1;
-        loadPokemonsDetails(numberPokemonMiddle, main);
-        document.getElementById('bigCardRight').classList.remove('d-none');
-        let right = document.getElementById(`bigCardRight`);
-        let numberPokemonRight = x;
-        loadPokemonsDetails(numberPokemonRight, right);
+        loadAllCards(x);
     }
 }
 
-function loadPokemonsDetails(number, position) {
+function hideBigLeftCard(x) {
+    document.getElementById('bigCardLeft').classList.add('d-none');
+    let main = document.getElementById(`bigCardMain`);
+    let numberPokemonMiddle = x - 1;
+    loadPokemonDetailsFromJSON(numberPokemonMiddle, main);
+    let right = document.getElementById(`bigCardRight`);
+    let numberPokemonRight = x;
+    loadPokemonDetailsFromJSON(numberPokemonRight, right);
+}
+
+function hideBigRightCard(x) {
+    let left = document.getElementById(`bigCardLeft`);
+    let numberPokemonLeft = x - 2;
+    loadPokemonDetailsFromJSON(numberPokemonLeft, left);
+    let main = document.getElementById(`bigCardMain`);
+    let numberPokemonMiddle = x - 1;
+    loadPokemonDetailsFromJSON(numberPokemonMiddle, main);
+    document.getElementById('bigCardRight').classList.add('d-none');
+}
+
+function loadAllCards(x) {
+    document.getElementById('bigCardLeft').classList.remove('d-none');
+    let left = document.getElementById(`bigCardLeft`);
+    let numberPokemonLeft = x - 2;
+    loadPokemonDetailsFromJSON(numberPokemonLeft, left);
+    let main = document.getElementById(`bigCardMain`);
+    let numberPokemonMiddle = x - 1;
+    loadPokemonDetailsFromJSON(numberPokemonMiddle, main);
+    document.getElementById('bigCardRight').classList.remove('d-none');
+    let right = document.getElementById(`bigCardRight`);
+    let numberPokemonRight = x;
+    loadPokemonDetailsFromJSON(numberPokemonRight, right);
+}
+
+function loadPokemonDetailsFromJSON(number, position) {
     let pokemon = pokemonArray[number];
     let name = pokemon['name'];
     let index = pokemon['index'];
@@ -286,19 +316,12 @@ function loadPokemonsDetails(number, position) {
     let type2 = pokemon['type2'];
     let typecolor1 = pokemon['typecolor1'];
     let typecolor2 = pokemon['typecolor2'];
-    showPokemon(name, index, pic, type1, type2, typecolor1, typecolor2, number, position);
+    showPokemonDetails(name, index, pic, type1, type2, typecolor1, typecolor2, number, position);
 }
 
-function showPokemon(name, index, pic, type1, type2, typecolor1, typecolor2, number, position) {
-    // console.log(number);
-    document.getElementById('arrowLeftBox').innerHTML =
-        `
-    <img src="./img/icons/arrow_left.png" class="arrow a-left" onclick="stopProp(); previousPokemon(${number})">
-    `;
-    document.getElementById('arrowRightBox').innerHTML =
-        `
-    <img src="./img/icons/arrow_right.png" class="arrow a-right" onclick="stopProp(); nextPokemon(${number})">
-    `;
+function showPokemonDetails(name, index, pic, type1, type2, typecolor1, typecolor2, number, position) {
+    showLeftArrow(number);
+    showRightArrow(number);
     position.innerHTML =
         `
     <img src="./img/pokeball_bg_grey_3.png" class="big-card-bg">
@@ -319,12 +342,70 @@ function showPokemon(name, index, pic, type1, type2, typecolor1, typecolor2, num
     <div class="big-card-details-bg-2"></div>
     <div class="big-card-details-bg-3"></div>
     <div class="big-card-details-bg-4">
-        <div class="pokemon-details"></div>
+        <div class="pokemon-details">
+            <div class="details-headlines">
+                <h5 onclick="showProportions(${number})">Proportions</h5>
+                <h5 onclick="showStats(${number})">Stats</h5>
+            </div>
+            <div id="pokemonDetails${number}" class="details-content">
+            </div>
+        </div>
     </div>
     `;
     if (type2 == 0) {
         document.getElementById(`secondType${number}`).classList.add('d-none');
     }
+    showProportions(number);
+}
+
+function showProportions(number) {
+    let pokemon = pokemonArray[number];
+    let height = pokemon['height'];
+    let weight = pokemon['weight'];
+    let experience = pokemon['base_experience'];
+    let details = document.getElementById(`pokemonDetails${number}`);
+    details.innerHTML = '';
+    details.innerHTML =
+        `
+    <span>${height}</span>
+    <span>${weight}</span>
+    <span>${experience}</span>
+    `;
+}
+
+function showStats(number) {
+    let pokemon = pokemonArray[number];
+    let hp = pokemon['hp'];
+    let attack = pokemon['attack'];
+    let defense = pokemon['defense'];
+    let speed = pokemon['speed'];
+    let specialattack = pokemon['specialattack'];
+    let specialdefense = pokemon['specialdefense'];
+    let details = document.getElementById(`pokemonDetails${number}`);
+    details.innerHTML = '';
+    details.innerHTML = 
+    `
+    <span>${hp}</span>
+    <span>${attack}</span>
+    <span>${defense}</span>
+    <span>${speed}</span>
+    <span>${specialattack}</span>
+    <span>${specialdefense}</span>
+    `;
+}
+
+function showLeftArrow(x) {
+    document.getElementById('arrowLeftBox').innerHTML =
+        `
+    <img src="./img/icons/arrow_left.png" class="arrow" onclick="stopProp(); previousPokemon(${x})">
+    `;
+}
+
+function showRightArrow(x) {
+    document.getElementById('arrowRightBox').innerHTML =
+        `
+    <img src="./img/icons/arrow_right.png" class="arrow" onclick="stopProp(); nextPokemon(${x})">
+    `;
 }
 
 function hideBigPokemonCard() {
@@ -332,23 +413,20 @@ function hideBigPokemonCard() {
 }
 
 function previousPokemon(x) {
-    console.log(x);
     if (x + 1 == pokemonArray.length) {
-        showBigPokemonCard(x);
-        document.getElementById('arrowLeftBox').innerHTML =
-            `
-        <img src="./img/icons/arrow_left.png" class="arrow a-left" onclick="stopProp(); previousPokemon(${x})">
-        `;
-    }
-    if (x + 1 < pokemonArray.length) {
+        loadBigPokemonCards(x);
         x = x - 1;
-        showBigPokemonCard(x);
+        showLeftArrow(x);
+    }
+    else {
+        x = x - 1;
+        loadBigPokemonCards(x);
     }
 }
 
 function nextPokemon(x) {
     x = x + 1;
-    showBigPokemonCard(x);
+    loadBigPokemonCards(x);
 }
 
 function stopProp() {

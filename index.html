@@ -12,31 +12,36 @@
 </head>
 
 <body id="body" onload="loadPokedex()" class="overflow">
-    <div class="frontpage d-none">
-        <div id="frontPageTop" class="frontpage-container fp-top">
-            <div class="start-button-box">
-                <button id="startButton" class="start-btn d-none" role="button"
-                    onclick="showStartAnimation()">START</button>
+    <div id="frontPageTop" class="frontpage-container fp-top d-none">
+        <div class="start-button-box">
+            <div id="loadingSymbol" class="loading"></div>
+            <div id="startButton" class="start-btn d-none" role="button" onclick="showStartAnimation()">
+                <span class='start-btn-text'>START</span>
             </div>
         </div>
-        <div id="frontPageBottom" class="frontpage-container fp-bottom">
-        </div>
+    </div>
+    <div id="frontPageBottom" class="frontpage-container fp-bottom d-none">
     </div>
     <div id="mainContent" class="main-content">
 
     </div>
     <div id="bigCardWindow" class="big-card-window d-none" onclick="hideBigPokemonCard()">
-        <div id="arrowLeftBox" class="arrow-left-box">
+        <div id="arrowLeftBox" class="arrow-box">
         </div>
-        <div class="big-poke-card-container">
-            <div id="bigCardLeft" class="poke-card big-poke-card-left" onclick="stopProp()">
+        <div class="big-card-window-content">
+            <div class="arrow-box back-symbol-box">
+                <img src="./img/icons/arrow_back.png" class="arrow back-symbol">
             </div>
-            <div id="bigCardMain" class="poke-card big-poke-card" onclick="stopProp()">
-            </div>
-            <div id="bigCardRight" class="poke-card big-poke-card-right" onclick="stopProp()">
+            <div class="big-poke-card-container">
+                <div id="bigCardLeft" class="poke-card big-poke-card-left" onclick="stopProp()">
+                </div>
+                <div id="bigCardMain" class="poke-card big-poke-card" onclick="stopProp()">
+                </div>
+                <div id="bigCardRight" class="poke-card big-poke-card-right" onclick="stopProp()">
+                </div>
             </div>
         </div>
-        <div id="arrowRightBox" class="arrow-right-box">
+        <div id="arrowRightBox" class="arrow-box">
         </div>
     </div>
 </body>

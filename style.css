@@ -40,15 +40,38 @@ body {
     border-radius: 100%;
 }
 
-.frontpage {
-    position: relative;
-    z-index: 10;
-    min-height: 100vh;
-    height: 100vh;
-    max-width: 100vw;
-    /* background-color: rgba(0, 0, 255, 0.281); */
-    /* overflow: hidden; */
+.loading {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    z-index: 99 !important;
+    top: 30px;
+    left: 29px;
 }
+
+.loading:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #000000;
+    border-color: #000000 transparent #000000 transparent;
+    animation: loading-ring 1.2s linear infinite;
+}
+
+@keyframes loading-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 .frontpage-container {
     position: absolute;
@@ -86,10 +109,23 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    margin-right: 21px;
+    margin-bottom: 2px;
+    border-radius: 50%;
 }
 
 .start-btn {
-    /* position: relative;
+    width: 200px;
+    height: 100%;
+    margin: 0 auto 0;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 99 !important;
+}
+
+.start-btn-text {
+    position: relative;
     top: 50%;
     left: 50%;
     margin-left: -50px;
@@ -97,92 +133,37 @@ body {
     display: block;
     width: 100px;
     height: 100px;
-    font-size: 1.5em;
-    font-weight: light;
-    font-family: 'Trebuchet MS', sans-serif;
-    text-transform: uppercase;
+    font-size: 1.3em;
     text-align: center;
     line-height: 100px;
-    letter-spacing: -1px;
-    color: black;
-    border: 5px solid black;
+    color: white;
     border-radius: 50%;
-    background: #0784be;
+    background: #1f1f1f;
     cursor: pointer;
-    box-shadow: 0 0 0 0 rgba(#000000, .5);
-    animation: pulse 1.5s infinite; */
-    padding: 0.3em 0.5em;
-    outline: none;
-    color: rgb(48, 103, 255);
-    background: #111;
-    cursor: pointer !important;
-    position: absolute;
-    border-radius: 100%;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    z-index: 99 !important;
-    pointer-events: all;
-    margin-right: 15px;
-    font-size: 1.6em;
-    font-weight: 700;
-    font-family: 'Trebuchet MS', sans-serif;
+    animation: pulse 1.5s infinite;
+    -webkit-box-shadow: 0px 0px 15px 4px #1f1f1f;
+    box-shadow: 0px 0px 15px 4px #1f1f1f;
 }
 
-.start-btn:hover {
-    background-color: aqua;
+.start-btn-text:hover {
+    -webkit-box-shadow: 0px 0px 15px 4px #c50000;
+    box-shadow: 0px 0px 15px 4px #c50000;
 }
 
-.start-btn:before {
-    content: "";
-    background: linear-gradient(45deg,
-            #2d7fb6,
-            #2c06b8,
-            #00ffff,
-            #0a0066,
-            #00ffd5,
-            #002bff,
-            #7a00ff,
-            #02ffab,
-            #005fdb);
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing-button-85 15s linear infinite;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 10px;
-}
-
-@keyframes glowing-button-85 {
+@keyframes pulse {
     0% {
-        background-position: 0 0;
+        transform: scale(.9);
     }
 
-    50% {
-        background-position: 400% 0;
+    70% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
     }
 
     100% {
-        background-position: 0 0;
+        transform: scale(.9);
+        box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
     }
-}
-
-.start-btn:after {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #222;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
 }
 
 .animation-go-up {
@@ -422,10 +403,7 @@ h3 {
     --mask: conic-gradient(from 60deg at left, #0000, #ffffff 1deg 59deg, #0000 60deg) 50%/100% 15.01px;
     -webkit-mask: var(--mask);
     mask: var(--mask);
-
 }
-
-
 
 .big-card-window {
     position: fixed;
@@ -444,9 +422,17 @@ h3 {
     align-items: center;
 }
 
+.big-card-window-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 .big-poke-card-container {
     display: flex;
     align-items: center;
+    margin-top: 30px;
 }
 
 .big-poke-card {
@@ -469,6 +455,7 @@ h3 {
     margin-right: -25px;
     z-index: 120;
     filter: blur(5px);
+    cursor: default !important;
 }
 
 .big-poke-card-right {
@@ -477,13 +464,36 @@ h3 {
     margin-left: -25px;
     z-index: 110;
     filter: blur(5px);
+    cursor: default !important;
+}
+
+.arrow-box {
+    height: 105px;
+    width: 105px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
 }
 
 .arrow {
-    height: 80px;
-    width: 60px;
+    height: 100px;
+    width: 100px;
     cursor: pointer;
-    border-radius: 50%;
+}
+
+.arrow-box:hover {
+    background-color: #b1b1b14b;
+}
+
+.back-symbol {
+    height: 110px;
+    width: 110px;
+}
+
+.back-symbol-box {
+    height: 130px;
+    width: 130px;
 }
 
 .big-card-bg-left {
@@ -532,9 +542,9 @@ h3 {
     height: 65%;
     width: 100%;
     background-color: #4b4b4b;
-    --mask: conic-gradient(from 137.5deg at top,#0000,#000 1deg 84deg,#0000 85deg) 50%/45.82px 100%;
+    --mask: conic-gradient(from 137.5deg at top, #0000, #000 1deg 84deg, #0000 85deg) 50%/45.82px 100%;
     -webkit-mask: var(--mask);
-            mask: var(--mask);
+    mask: var(--mask);
 }
 
 .big-card-details-bg-2 {
@@ -545,9 +555,9 @@ h3 {
     width: 100%;
     /* opacity: 0.3; */
     background-color: #868686;
-    --mask: conic-gradient(from 137.5deg at top,#0000,#000 1deg 84deg,#0000 85deg) 50%/45.82px 100%;
+    --mask: conic-gradient(from 137.5deg at top, #0000, #000 1deg 84deg, #0000 85deg) 50%/45.82px 100%;
     -webkit-mask: var(--mask);
-            mask: var(--mask);
+    mask: var(--mask);
 }
 
 .big-card-details-bg-3 {
@@ -558,9 +568,9 @@ h3 {
     width: 100%;
     /* opacity: 0.5; */
     background-color: #b1b1b1;
-    --mask: conic-gradient(from 137.5deg at top,#0000,#000 1deg 84deg,#0000 85deg) 50%/45.82px 100%;
+    --mask: conic-gradient(from 137.5deg at top, #0000, #000 1deg 84deg, #0000 85deg) 50%/45.82px 100%;
     -webkit-mask: var(--mask);
-            mask: var(--mask);
+    mask: var(--mask);
 }
 
 .big-card-details-bg-4 {
@@ -570,9 +580,9 @@ h3 {
     height: 59%;
     width: 100%;
     background-color: #f0f8ff;
-    --mask: conic-gradient(from 137.5deg at top,#0000,#000 1deg 84deg,#0000 85deg) 50%/45.82px 100%;
+    --mask: conic-gradient(from 137.5deg at top, #0000, #000 1deg 84deg, #0000 85deg) 50%/45.82px 100%;
     -webkit-mask: var(--mask);
-            mask: var(--mask);
+    mask: var(--mask);
 
 }
 
@@ -582,19 +592,19 @@ h3 {
     z-index: 190;
 }
 
-.big-card-pokemon-name{
+.big-card-pokemon-name {
     margin-top: 25px;
     margin-left: 25px;
     font-size: 34px;
 }
 
-.big-card-index-number{
+.big-card-index-number {
     margin-left: 27px;
     font-size: 20px;
     margin-bottom: 4px;
 }
 
-.big-card-type{
+.big-card-type {
     margin-left: 25px;
     font-size: 20px;
     font-style: italic;
@@ -603,10 +613,23 @@ h3 {
     letter-spacing: 1px;
 }
 
-.a-left {}
+.pokemon-details {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
-.a-right {}
+.details-headlines{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
 
-.pokemon-details{
-
+.details-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
