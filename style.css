@@ -468,7 +468,7 @@ h3 {
     width: 400px;
     margin-right: -25px;
     z-index: 120;
-    filter: blur(3px);
+    filter: blur(5px);
 }
 
 .big-poke-card-right {
@@ -476,7 +476,7 @@ h3 {
     width: 400px;
     margin-left: -25px;
     z-index: 110;
-    filter: blur(3px);
+    filter: blur(5px);
 }
 
 .arrow {

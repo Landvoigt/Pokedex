@@ -120,6 +120,14 @@ function showStartAnimation() {
     setTimeout(deleteFrontPage, 2500);
 }
 
+function deleteFrontPage() {
+    let top = document.getElementById('frontPageTop');
+    let bottom = document.getElementById('frontPageBottom');
+    top.classList.add('d-none');
+    bottom.classList.add('d-none');
+    document.getElementById('body').classList.remove('overflow');
+}
+
 function variables(pokemon, x) {
     let name = pokemon['name'];
     let pic = pokemon['sprites']['other']['home']['front_default'];
@@ -226,30 +234,47 @@ function pushPokemonDetailsInJSON(x, name, index, pic, type_1, type_2, typecolor
         'type2': type_2,
         'typecolor1': typecolor1,
         'typecolor2': typecolor2,
-        'shinyPic' : shinyPic
+        'shinyPic': shinyPic
     }
     pokemonArray.push(data);
 }
 
-function deleteFrontPage() {
-    let top = document.getElementById('frontPageTop');
-    let bottom = document.getElementById('frontPageBottom');
-    top.classList.add('d-none');
-    bottom.classList.add('d-none');
-    document.getElementById('body').classList.remove('overflow');
-}
 
 function showBigPokemonCard(x) {
+    // console.log(x);
     document.getElementById(`bigCardWindow`).classList.remove('d-none');
-    let main = document.getElementById(`bigCardMain`);
-    let numberPokemonMiddle = x - 1;
-    loadPokemonsDetails(numberPokemonMiddle, main);
-    let left = document.getElementById(`bigCardLeft`);
-    let numberPokemonLeft = x - 2;
-    loadPokemonsDetails(numberPokemonLeft, left);
-    let right = document.getElementById(`bigCardRight`);
-    let numberPokemonRight = x;
-    loadPokemonsDetails(numberPokemonRight, right);
+    if (x == 1) {
+        document.getElementById('bigCardLeft').classList.add('d-none');
+        let main = document.getElementById(`bigCardMain`);
+        let numberPokemonMiddle = x - 1;
+        loadPokemonsDetails(numberPokemonMiddle, main);
+        let right = document.getElementById(`bigCardRight`);
+        let numberPokemonRight = x;
+        loadPokemonsDetails(numberPokemonRight, right);
+    }
+    if (x == pokemonArray.length) {
+        let left = document.getElementById(`bigCardLeft`);
+        let numberPokemonLeft = x - 2;
+        loadPokemonsDetails(numberPokemonLeft, left);
+        let main = document.getElementById(`bigCardMain`);
+        let numberPokemonMiddle = x - 1;
+        loadPokemonsDetails(numberPokemonMiddle, main);
+        document.getElementById('bigCardRight').classList.add('d-none');
+
+    }
+    if (x > 1 && x < pokemonArray.length) {
+        document.getElementById('bigCardLeft').classList.remove('d-none');
+        let left = document.getElementById(`bigCardLeft`);
+        let numberPokemonLeft = x - 2;
+        loadPokemonsDetails(numberPokemonLeft, left);
+        let main = document.getElementById(`bigCardMain`);
+        let numberPokemonMiddle = x - 1;
+        loadPokemonsDetails(numberPokemonMiddle, main);
+        document.getElementById('bigCardRight').classList.remove('d-none');
+        let right = document.getElementById(`bigCardRight`);
+        let numberPokemonRight = x;
+        loadPokemonsDetails(numberPokemonRight, right);
+    }
 }
 
 function loadPokemonsDetails(number, position) {
@@ -265,6 +290,15 @@ function loadPokemonsDetails(number, position) {
 }
 
 function showPokemon(name, index, pic, type1, type2, typecolor1, typecolor2, number, position) {
+    // console.log(number);
+    document.getElementById('arrowLeftBox').innerHTML =
+        `
+    <img src="./img/icons/arrow_left.png" class="arrow a-left" onclick="stopProp(); previousPokemon(${number})">
+    `;
+    document.getElementById('arrowRightBox').innerHTML =
+        `
+    <img src="./img/icons/arrow_right.png" class="arrow a-right" onclick="stopProp(); nextPokemon(${number})">
+    `;
     position.innerHTML =
         `
     <img src="./img/pokeball_bg_grey_3.png" class="big-card-bg">
@@ -295,6 +329,26 @@ function showPokemon(name, index, pic, type1, type2, typecolor1, typecolor2, num
 
 function hideBigPokemonCard() {
     document.getElementById(`bigCardWindow`).classList.add('d-none');
+}
+
+function previousPokemon(x) {
+    console.log(x);
+    if (x + 1 == pokemonArray.length) {
+        showBigPokemonCard(x);
+        document.getElementById('arrowLeftBox').innerHTML =
+            `
+        <img src="./img/icons/arrow_left.png" class="arrow a-left" onclick="stopProp(); previousPokemon(${x})">
+        `;
+    }
+    if (x + 1 < pokemonArray.length) {
+        x = x - 1;
+        showBigPokemonCard(x);
+    }
+}
+
+function nextPokemon(x) {
+    x = x + 1;
+    showBigPokemonCard(x);
 }
 
 function stopProp() {
