@@ -447,6 +447,7 @@ h3 {
         0px 2px 5px 2px rgba(0, 0, 0, 0.6),
         0px 0px 27px 10px #000000;
     background-color: #1b1b1b;
+    cursor: default !important;
 }
 
 .big-poke-card-left {
@@ -614,22 +615,139 @@ h3 {
 }
 
 .pokemon-details {
-    height: 100%;
+    height: 90%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* justify-content: space-evenly; */
+    margin-top: 95px;
+}
+
+.details-headlines {
+    width: 100%;
+    display: flex;
     justify-content: space-evenly;
 }
 
-.details-headlines{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.details-content{
+.details-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.progress-bar-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.progress-bar-box {
+    width: 30%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    transition: transform .2s;
+}
+
+h5{
+    font-size: 1.3em;
+    opacity: 0.75;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-position: under;
+    cursor: pointer;
+}
+
+h5:hover{
+    color: #000296;
+}
+
+h6{
+    font-size: .8em;
+    margin-top: 0;
+    color: #999;
+    font-weight: 700;
+}
+
+h7{
+    font-size: 1.1em;
+    font-weight: 800;
+    color: #000000b4;
+}
+
+/* .progress-bar-box:hover
+{
+ transform:scale(1.2);
+} */
+.progress-bar-box .percent {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.progress-bar-box .percent svg {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform: rotate(273deg);
+}
+
+.progress-bar-box .percent svg circle {
+    width: 100px;
+    height: 100px;
+    fill: none;
+    stroke-width: 10;
+    stroke: #000;
+    transform: translate(5px, 5px);
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    stroke-linecap: round;
+}
+
+.progress-bar-box .percent svg circle:nth-child(1) {
+    stroke-dashoffset: 0;
+    stroke: #d8d8d8;
+}
+
+.progress-bar-box .percent svg circle:nth-child(2) {
+    stroke-dashoffset: calc(440 - (440 * 87) / 100);
+    stroke: #03a9f4;
+}
+
+.progress-bar-box .percent .num {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: #111;
+}
+
+.progress-bar-box .percent .num h2 {
+    font-size: 48px;
+}
+
+.progress-bar-box .percent .num h2 span {
+    font-size: 24px;
+}
+
+.text {
+    margin-bottom: 4px !important;
+}
+
+.margin-extra{
+    margin-left: 3px;
+    margin-top: 5px;
 }

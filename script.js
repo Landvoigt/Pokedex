@@ -95,7 +95,7 @@ let pokemonArray = [];
 
 async function loadPokedex() {
     pokemonArray.length = 0;
-    for (let x = 1; x < 10; x++) {
+    for (let x = 1; x < 50; x++) {
         let pokemonURL = `https://pokeapi.co/api/v2/pokemon/${x}`;
         let response = await fetch(pokemonURL);
         pokemon = await response.json();
@@ -361,15 +361,51 @@ function showPokemonDetails(name, index, pic, type1, type2, typecolor1, typecolo
 function showProportions(number) {
     let pokemon = pokemonArray[number];
     let height = pokemon['height'];
+    height = height / 10;
     let weight = pokemon['weight'];
     let experience = pokemon['base_experience'];
     let details = document.getElementById(`pokemonDetails${number}`);
     details.innerHTML = '';
     details.innerHTML =
         `
-    <span>${height}</span>
-    <span>${weight}</span>
-    <span>${experience}</span>
+    <div class="progress-bar-container">
+        <div class="progress-bar-box">
+            <h6>Height</h6>
+            <div class="percent">
+                <svg>
+                    <circle cx="45" cy="45" r="45"></circle>
+                    <circle cx="45" cy="45" r="45" style="stroke: #18bd00; stroke-dashoffset: calc(440 - (440 * ${height}) / 22);"></circle>
+                </svg>
+                <div class="num">
+                    <h7>${height}<span>m</span></h7>
+                </div>
+            </div>
+        </div>
+        <div class="progress-bar-box">
+            <h6>Weight</h6>
+            <div class="percent">
+                <svg>
+                    <circle cx="45" cy="45" r="45"></circle>
+                    <circle cx="45" cy="45" r="45" style="stroke: #e79100; stroke-dashoffset: calc(440 - (440 * ${weight}) / 1500);"></circle>
+                </svg>
+                <div class="num">
+                    <h7>${weight}<span>kg</span></h7>
+                </div>
+            </div>
+        </div>
+        <div class="progress-bar-box">
+            <h6>Base Experience</h6>
+            <div class="percent">
+                <svg>
+                    <circle cx="45" cy="45" r="45"></circle>
+                    <circle cx="45" cy="45" r="45" style="stroke: #a91cc7; stroke-dashoffset: calc(440 - (440 * ${experience}) / 800);"></circle>
+                </svg>
+                <div class="num">
+                    <h7>${experience}<span></span></h7>
+                </div>
+            </div>
+        </div>
+    </div>
     `;
 }
 
@@ -383,14 +419,82 @@ function showStats(number) {
     let specialdefense = pokemon['specialdefense'];
     let details = document.getElementById(`pokemonDetails${number}`);
     details.innerHTML = '';
-    details.innerHTML = 
-    `
-    <span>${hp}</span>
-    <span>${attack}</span>
-    <span>${defense}</span>
-    <span>${speed}</span>
-    <span>${specialattack}</span>
-    <span>${specialdefense}</span>
+    details.innerHTML =
+        `
+    <div class="progress-bar-container">
+        <div class="progress-bar-box" style="height: 130px">
+            <h6 class="text">HP</h6>
+            <div class="percent" style="width: 78px; height: 130px">
+                <svg>
+                    <circle cx="35" cy="35" r="35"></circle>
+                    <circle cx="35" cy="35" r="35" style="stroke: #18bd00; stroke-dashoffset: calc(440 - (440 * ${hp}) / 250);"></circle>
+                </svg>
+                <div class="num">
+                    <h7 class="margin-extra" >${hp}<span></span></h7>
+                </div>
+            </div>
+        </div>
+        <div class="progress-bar-box" style="height: 130px">
+            <h6 class="text">Attack</h6>
+            <div class="percent" style="width: 78px; height: 130px">
+                <svg>
+                    <circle cx="35" cy="35" r="35"></circle>
+                    <circle cx="35" cy="35" r="35" style="stroke: #e79100; stroke-dashoffset: calc(440 - (440 * ${attack}) / 200);"></circle>
+                </svg>
+                <div class="num">
+                    <h7 class="margin-extra" >${attack}<span></span></h7>
+                </div>
+            </div>
+        </div>
+        <div class="progress-bar-box" style="height: 130px">
+            <h6 class="text">Defense</h6>
+            <div class="percent" style="width: 78px; height: 130px">
+                <svg>
+                    <circle cx="35" cy="35" r="35"></circle>
+                    <circle cx="35" cy="35" r="35" style="stroke: #a91cc7; stroke-dashoffset: calc(440 - (440 * ${defense}) / 230);"></circle>
+                </svg>
+                <div class="num">
+                    <h7 class="margin-extra" >${defense}<span></span></h7>
+                </div>
+            </div>
+        </div>
+        <div class="progress-bar-box" style="height: 130px">
+            <h6 class="text">Speed</h6>
+            <div class="percent" style="width: 78px; height: 130px">
+                <svg>
+                    <circle cx="35" cy="35" r="35"></circle>
+                    <circle cx="35" cy="35" r="35" style="stroke: #18bd00; stroke-dashoffset: calc(440 - (440 * ${speed}) / 200);"></circle>
+                </svg>
+                <div class="num">
+                    <h7 class="margin-extra" >${speed}<span></span></h7>
+                </div>
+            </div>
+        </div>
+        <div class="progress-bar-box" style="height: 130px">
+            <h6 class="text">Special Attack</h6>
+            <div class="percent" style="width: 78px; height: 130px">
+                <svg>
+                    <circle cx="35" cy="35" r="35"></circle>
+                    <circle cx="35" cy="35" r="35" style="stroke: #e79100; stroke-dashoffset: calc(440 - (440 * ${specialattack}) / 200);"></circle>
+                </svg>
+                <div class="num">
+                    <h7 class="margin-extra" >${specialattack}<span></span></h7>
+                </div>
+            </div>
+        </div>
+        <div class="progress-bar-box" style="height: 130px">
+            <h6 class="text">Special Defense</h6>
+            <div class="percent" style="width: 78px; height: 130px">
+                <svg>
+                    <circle cx="35" cy="35" r="35"></circle>
+                    <circle cx="35" cy="35" r="35" style="stroke: #a91cc7; stroke-dashoffset: calc(440 - (440 * ${specialdefense}) / 230);"></circle>
+                </svg>
+                <div class="num">
+                    <h7 class="margin-extra" >${specialdefense}<span></span></h7>
+                </div>
+            </div>
+        </div>
+    </div>
     `;
 }
 
