@@ -288,7 +288,7 @@ body {
     align-items: flex-start;
     justify-content: space-around;
     position: absolute;
-    z-index: 4;
+    z-index: 100;
 }
 
 .card-text-top {
@@ -554,7 +554,6 @@ h3 {
     bottom: 0;
     height: 61%;
     width: 100%;
-    /* opacity: 0.3; */
     background-color: #868686;
     --mask: conic-gradient(from 137.5deg at top, #0000, #000 1deg 84deg, #0000 85deg) 50%/45.82px 100%;
     -webkit-mask: var(--mask);
@@ -567,7 +566,6 @@ h3 {
     bottom: 0;
     height: 60%;
     width: 100%;
-    /* opacity: 0.5; */
     background-color: #b1b1b1;
     --mask: conic-gradient(from 137.5deg at top, #0000, #000 1deg 84deg, #0000 85deg) 50%/45.82px 100%;
     -webkit-mask: var(--mask);
@@ -620,8 +618,7 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-evenly; */
-    margin-top: 95px;
+    margin-top: 90px;
 }
 
 .details-headlines {
@@ -635,10 +632,10 @@ h3 {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 4px;
 }
 
-.progress-bar-container{
+.progress-bar-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -653,41 +650,47 @@ h3 {
     align-items: center;
     position: relative;
     flex-direction: column;
+    margin-top: 4px;
     transition: transform .2s;
 }
 
-h5{
+.links {
     font-size: 1.3em;
     opacity: 0.75;
     margin-top: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-position: under;
     cursor: pointer;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 7px;
+    border-radius: 10px;
 }
 
-h5:hover{
+.links:hover {
+    color: #000296;
+    background-color: #d8d8d8;
+}
+
+.active {
     color: #000296;
 }
 
-h6{
+h6 {
     font-size: .8em;
-    margin-top: 0;
+    margin-top: 4px;
     color: #999;
     font-weight: 700;
 }
 
-h7{
+h7 {
     font-size: 1.1em;
     font-weight: 800;
     color: #000000b4;
 }
 
-/* .progress-bar-box:hover
-{
- transform:scale(1.2);
-} */
 .progress-bar-box .percent {
     width: 100px;
     height: 100px;
@@ -747,7 +750,7 @@ h7{
     margin-bottom: 4px !important;
 }
 
-.margin-extra{
-    margin-left: 3px;
-    margin-top: 5px;
+.margin-extra {
+    margin-left: 2px;
+    margin-top: 10px;
 }
