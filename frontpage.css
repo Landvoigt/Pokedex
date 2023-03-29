@@ -1,0 +1,359 @@
+.loading {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    z-index: 99 !important;
+    top: 22px;
+    left: 25px;
+}
+
+.loading:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 10px solid #1f1f1f;
+    border-color: #1f1f1f transparent #1f1f1f transparent;
+    animation: loading-ring 1.2s linear infinite;
+}
+
+.frontpage-container {
+    position: fixed;
+    z-index: 15;
+    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+.fp-top {
+    background-image: url('img/frontpage/pokemon_ball_top.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fp-bottom {
+    background-image: url('img/frontpage/pokemon_ball_bottom.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-size: 100%;
+    z-index: 14 !important;
+}
+
+.start-button-box {
+    height: 150px;
+    width: 150px;
+    z-index: 16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-right: 21px;
+    margin-bottom: 2px;
+    border-radius: 50%;
+}
+
+.start-btn {
+    width: 200px;
+    height: 100%;
+    margin: 0 auto 0;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 99 !important;
+}
+
+.start-btn-text {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    display: block;
+    width: 100px;
+    height: 100px;
+    font-size: 1.3em;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+    border-radius: 50%;
+    background: #1f1f1f;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+    -webkit-box-shadow: 0px 0px 15px 4px #1f1f1f;
+    box-shadow: 0px 0px 15px 4px #1f1f1f;
+}
+
+.start-btn-text:hover {
+    -webkit-box-shadow: 0px 0px 15px 4px #c50000;
+    box-shadow: 0px 0px 15px 4px #c50000;
+}
+
+
+.animation-go-up {
+    animation: goUp 4s linear .6s infinite;
+}
+
+.animation-go-down {
+    animation: goDown 4s linear .6s infinite;
+}
+
+.animation-go-down-mobile {
+    animation: goDownMobile 4s linear .6s infinite;
+}
+
+.d-none {
+    display: none !important;
+}
+
+@keyframes loading-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(.9);
+    }
+
+    70% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+    }
+
+    100% {
+        transform: scale(.9);
+        box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+    }
+}
+
+@keyframes goUp {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: -300%;
+    }
+}
+
+@keyframes goDown {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 200%;
+    }
+}
+
+@keyframes goDownMobile {
+    from {
+        bottom: 0;
+    }
+
+    to {
+        bottom: -200%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .fp-top {
+        background-position: '';
+    }
+
+    .fp-bottom {
+        background-position: '';
+    }
+}
+
+@media (max-width: 1900px) {
+    .start-button-box {
+        margin-right: 22px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 1700px) {
+    .start-button-box {
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 1500px) {
+    .start-button-box {
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 1300px) {
+    .start-button-box {
+        margin-right: 16px;
+        margin-bottom: 0;
+    }
+
+    .loading {
+        top: 25px;
+        left: 26px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .start-button-box {
+        margin-right: 15px;
+        margin-bottom: 1px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .start-button-box {
+        margin-right: 16px;
+        margin-bottom: 2px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .start-button-box {
+        height: 100px;
+        width: 100px;
+        margin-right: 12px;
+        margin-bottom: 0;
+    }
+
+    .start-btn {
+        width: 120px;
+        height: 100%;
+    }
+
+    .start-btn-text {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        margin-left: -25px;
+        margin-top: -25px;
+        font-size: 0.75em;
+        line-height: 50px;
+    }
+
+    .loading {
+        width: 50px;
+        height: 50px;
+        top: 16px;
+        left: 18px;
+    }
+
+    .loading:after {
+        width: 44px;
+        height: 44px;
+        margin: 6px;
+        border-radius: 50%;
+        border: 5px solid #1f1f1f;
+        border-color: #1f1f1f transparent #1f1f1f transparent;
+        animation: loading-ring 1.2s linear infinite;
+    }
+}
+
+@media (max-width: 980px) {
+    .front-page-underground-mobile-top {
+        z-index: 14;
+        position: fixed;
+        height: 34vh;
+        width: 100%;
+        top: 0;
+        background-color: #e41f25;
+    }
+
+    .front-page-underground-mobile-bottom {
+        z-index: 14;
+        position: fixed;
+        height: 34vh;
+        width: 100%;
+        bottom: 0;
+        background-color: #ffffff;
+    }
+}
+
+@media (max-width: 800px) {
+    .start-button-box {
+        margin-right: 10px;
+        margin-bottom: 1px;
+    }
+}
+
+@media (max-width: 650px) {
+    .start-button-box {
+        height: 70px;
+        width: 70px;
+        margin-right: 7px;
+        margin-bottom: 0;
+    }
+
+    .start-btn {
+        width: 80px;
+        height: 100%;
+    }
+
+    .loading {
+        width: 50px;
+        height: 50px;
+        top: 2px;
+        left: 2px;
+    }
+
+    .loading:after {
+        width: 44px;
+        height: 44px;
+        margin: 6px;
+        border-radius: 50%;
+        border: 5px solid #1f1f1f;
+        border-color: #1f1f1f transparent #1f1f1f transparent;
+        animation: loading-ring 1.2s linear infinite;
+    }
+}
+
+@media (max-width: 530px) {
+    .start-button-box {
+        height: 100px;
+        width: 100px;
+        margin-right: 7px;
+        margin-bottom: 0;
+        border-radius: 100%;
+    }
+
+    .start-btn {
+        width: 100%;
+        height: 100%;
+    }
+
+    .loading {
+        width: 50px;
+        height: 50px;
+        top: 24px;
+        left: 24px;
+    }
+
+    .loading:after {
+        width: 34px;
+        height: 34px;
+        margin: 4px;
+        border-radius: 50%;
+        border: 5px solid #1f1f1f;
+        border-color: #1f1f1f transparent #1f1f1f transparent;
+        animation: loading-ring 1.2s linear infinite;
+    }
+}

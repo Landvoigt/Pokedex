@@ -1,0 +1,184 @@
+body {
+    margin: 0;
+    font-family: 'Gantari', sans-serif;
+}
+
+.main-content {
+    z-index: 0;
+    background-color: rgb(230, 243, 255);
+    min-height: 100vh;
+    height: auto;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 1;
+    padding: 22px;
+    opacity: 1;
+    background-image: url('./img/background/pokeball_bg_grey_3.png');
+    background-size: 200px 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-content:before {
+    background: rgb(226, 0, 0);
+    bottom: 100%;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    transform-origin: 80% 50%;
+    transform: rotate(-23deg);
+    width: 200%;
+    border: 3px solid black;
+    border-radius: 100%;
+}
+
+.poke-card {
+    height: 240px;
+    width: 180px;
+    margin: 11px;
+    border: 4px solid rgb(211, 7, 7);
+    border-radius: 15px;
+    border-style: ridge;
+    -webkit-box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #3a3a3a;
+    cursor: pointer;
+}
+
+.card-text {
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    position: absolute;
+    z-index: 100;
+}
+
+.card-text-top {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card-text-bottom {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+h3 {
+    width: 100%;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    color: white;
+    font-size: 1.5em;
+    text-transform: capitalize;
+    text-shadow:
+        0px 0px 5px #000000,
+        0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.mt-40 {
+    margin-top: 40px !important;
+}
+
+.small-pokemon-img {
+    position: absolute;
+    z-index: 99;
+    height: 120px;
+    width: 120px;
+    top: 60px;
+}
+
+.index-number {
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 0;
+    text-shadow: 0px 0px 5px #000000;
+}
+
+.type-small-image {
+    color: white;
+    letter-spacing: 0.2px;
+    text-shadow:
+        1px 1px 0 #000000,
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000,
+        -1px -1px 0 #000000,
+        1px 0px 0 #000000,
+        0px 1px 0 #000000,
+        -1px 0px 0 #000000,
+        0px -1px 0 #000000;
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 3px;
+    padding-top: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 8px;
+    background-color: #ffffff8a;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.card-bg-one-type {
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.card-bg-left {
+    z-index: 0;
+    position: absolute;
+    width: 220%;
+    height: 220%;
+    top: 0;
+    transform: rotate(36deg) translate(-90%);
+    margin-left: 191px;
+    --mask: conic-gradient(from -120deg at right, #0000, #000 1deg 59deg, #0000 60deg) 50%/100% 15.01px;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+}
+
+.card-bg-right {
+    z-index: 0;
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    bottom: 0;
+    right: 9px;
+    transform: rotate(36deg) translate(90%);
+    right: 10px;
+    --mask: conic-gradient(from 60deg at left, #0000, #ffffff 1deg 59deg, #0000 60deg) 50%/100% 15.01px;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+}
