@@ -1,11 +1,12 @@
 function showProportions(number) {
-    let pokemon = pokemonArray[0];
+    let pokemon = pokemonArray[number];
     let height = pokemon['height'];
     height = height / 10;
     let weight = pokemon['weight'];
     weight = weight / 10;
     let experience = pokemon['base_experience'];
     let details = document.getElementById(`pokemonDetails${number}`);
+    details.innerHTML = '';
     details.innerHTML =
         `
     <div class="progress-bar-container">

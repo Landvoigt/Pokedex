@@ -64,7 +64,6 @@ function pushPokemonDetailsInJSON(x, name, index, pic, type_1, type_2, typecolor
     let stat_specialattack = pokemon['stats'][3]['base_stat'];
     let stat_specialdefense = pokemon['stats'][4]['base_stat'];
     let stat_speed = pokemon['stats'][5]['base_stat'];
-    // let abilities = [];
     let data = {
         'url': `https://pokeapi.co/api/v2/pokemon/${x}`,
         'name': name,

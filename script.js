@@ -95,7 +95,7 @@ let pokemonArray = [];
 
 async function loadPokedex() {
     pokemonArray.length = 0;
-    for (let x = 1; x < 1000; x++) {
+    for (let x = 1; x < 50; x++) {
         let pokemonURL = `https://pokeapi.co/api/v2/pokemon/${x}`;
         let response = await fetch(pokemonURL);
         pokemon = await response.json();

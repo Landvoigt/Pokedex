@@ -82,7 +82,7 @@ function showPokemonDetails(name, index, pic, type1, type2, typecolor1, typecolo
     <div class="big-card-details-bg-4">
         <div class="pokemon-details">
             <div class="details-headlines">
-                <h5 id="detailHeadline1${number}" class="links " onclick="showProportions(${number})">Proportions</h5>
+                <h5 id="detailHeadline1${number}" class="links" onclick="showProportions(${number})">Proportions</h5>
                 <h5 id="detailHeadline2${number}" class="links active" onclick="showStats(${number})">Stats</h5>
             </div>
             <div id="pokemonDetails${number}" class="details-content">
@@ -97,6 +97,7 @@ function showPokemonDetails(name, index, pic, type1, type2, typecolor1, typecolo
 }
 
 function showLeftArrow(x) {
+    x = x + 1;
     document.getElementById('arrowLeftBox').innerHTML =
         `
     <img src="./img/icons/arrow_left.png" class="arrow" onclick="stopProp(); previousPokemon(${x})">
@@ -114,14 +115,17 @@ function hideBigPokemonCard() {
     document.getElementById(`bigCardWindow`).classList.add('d-none');
 }
 
-function previousPokemon(x) {
+function previousPokemon(x) {   ///not good enough
     if (x + 1 == pokemonArray.length) {
+        x = x - 1;
         loadBigPokemonCards(x);
-        x = x - 1;
-        showLeftArrow(x);
     }
-    else {
-        x = x - 1;
+    if (x == pokemonArray.length) {
+        x = x - 2;
+        loadBigPokemonCards(x);
+    }
+    if (x < pokemonArray.length) {
+        x = x - 2;
         loadBigPokemonCards(x);
     }
 }
