@@ -29,7 +29,6 @@
 }
 
 .progress-bar-box {
-    width: 30%;
     height: 200px;
     display: flex;
     justify-content: center;
@@ -38,6 +37,12 @@
     flex-direction: column;
     margin-top: 4px;
     transition: transform .2s;
+    flex-basis: 28%;
+}
+
+.padding-LR-8 {
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 h6 {

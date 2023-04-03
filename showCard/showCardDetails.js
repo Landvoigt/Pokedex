@@ -10,7 +10,7 @@ function showProportions(number) {
     details.innerHTML =
         `
     <div class="progress-bar-container">
-        <div class="progress-bar-box">
+        <div class="progress-bar-box padding-LR-8">
             <h6>Height</h6>
             <div class="percent">
                 <svg>
@@ -22,7 +22,7 @@ function showProportions(number) {
                 </div>
             </div>
         </div>
-        <div class="progress-bar-box">
+        <div class="progress-bar-box padding-LR-8">
             <h6>Weight</h6>
             <div class="percent">
                 <svg>
@@ -34,7 +34,7 @@ function showProportions(number) {
                 </div>
             </div>
         </div>
-        <div class="progress-bar-box">
+        <div class="progress-bar-box padding-LR-8">
             <h6>Base Experience</h6>
             <div class="percent">
                 <svg>
