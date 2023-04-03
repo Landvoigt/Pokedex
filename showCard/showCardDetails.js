@@ -6,7 +6,7 @@ function showProportions(number) {
     weight = weight / 10;
     let experience = pokemon['base_experience'];
     let details = document.getElementById(`pokemonDetails${number}`);
-    details.innerHTML = '';
+    // details.innerHTML = '';
     details.innerHTML =
         `
     <div class="progress-bar-container">

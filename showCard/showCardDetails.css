@@ -40,30 +40,6 @@
     transition: transform .2s;
 }
 
-.links {
-    font-size: 1.3em;
-    opacity: 0.75;
-    margin-top: 4px;
-    margin-bottom: 8px;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-position: under;
-    cursor: pointer;
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 7px;
-    border-radius: 10px;
-}
-
-.links:hover {
-    color: #000296;
-    background-color: #d8d8d8;
-}
-
-.active {
-    color: #000296;
-}
-
 h6 {
     font-size: .8em;
     margin-top: 4px;
