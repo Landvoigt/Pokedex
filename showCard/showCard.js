@@ -1,16 +1,16 @@
 function loadBigPokemonCards(x) {
     document.getElementById(`bigCardWindow`).classList.remove('d-none');
-    if (x == 1) {
+    if (x == 0) {
         hideBigLeftCard(x);
         hideLeftArrow();
         showRightArrow(x);
     }
-    if (x == pokemonArray.length) {
+    if (x == pokemonArray.length - 1) {
         hideBigRightCard(x);
         hideRightArrow();
         showLeftArrow(x);
     }
-    if (x > 1 && x < pokemonArray.length) {
+    if (x > 0 && x < pokemonArray.length - 1) {
         loadAllCards(x);
         showLeftArrow(x);
         showRightArrow(x);
@@ -22,10 +22,10 @@ function hideBigLeftCard(x) {
     left.innerHTML = '';
     left.classList.add('d-none');
     let main = document.getElementById(`bigCardMain`);
-    let numberPokemonMiddle = x - 1;
+    let numberPokemonMiddle = x;
     loadPokemonDetailsFromJSON(numberPokemonMiddle, main);
     let right = document.getElementById(`bigCardRight`);
-    let numberPokemonRight = x;
+    let numberPokemonRight = x + 1;
     loadPokemonDetailsFromJSON(numberPokemonRight, right);
 }
 
@@ -34,25 +34,28 @@ function hideBigRightCard(x) {
     right.innerHTML = '';
     right.classList.add('d-none');
     let left = document.getElementById(`bigCardLeft`);
-    let numberPokemonLeft = x - 2;
+    let numberPokemonLeft = x - 1;
     loadPokemonDetailsFromJSON(numberPokemonLeft, left);
     let main = document.getElementById(`bigCardMain`);
-    let numberPokemonMiddle = x - 1;
+    let numberPokemonMiddle = x;
     loadPokemonDetailsFromJSON(numberPokemonMiddle, main);
 }
 
 function loadAllCards(x) {
     document.getElementById('bigCardLeft').classList.remove('d-none');
     let left = document.getElementById(`bigCardLeft`);
-    let numberPokemonLeft = x - 2;
+    let numberPokemonLeft = x - 1;
     loadPokemonDetailsFromJSON(numberPokemonLeft, left);
     let main = document.getElementById(`bigCardMain`);
-    let numberPokemonMiddle = x - 1;
+    let numberPokemonMiddle = x;
     loadPokemonDetailsFromJSON(numberPokemonMiddle, main);
     document.getElementById('bigCardRight').classList.remove('d-none');
     let right = document.getElementById(`bigCardRight`);
-    let numberPokemonRight = x;
+    let numberPokemonRight = x + 1;
     loadPokemonDetailsFromJSON(numberPokemonRight, right);
+    if(x - 1 == currentLoadedPokemon){
+        loadMore();
+    }
 }
 
 function loadPokemonDetailsFromJSON(number, position) {

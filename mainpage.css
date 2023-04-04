@@ -14,10 +14,12 @@ body {
     justify-content: center;
     z-index: 1;
     padding: 22px;
+    padding-top: 88px;
+    padding-bottom: 110px;
     opacity: 1;
     background-image: url('./img/background/pokeball_bg_grey_3.png');
     background-size: 200px 200px;
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
 }
 
@@ -181,6 +183,62 @@ h3 {
     --mask: conic-gradient(from 60deg at left, #0000, #ffffff 1deg 59deg, #0000 60deg) 50%/100% 15.01px;
     -webkit-mask: var(--mask);
     mask: var(--mask);
+}
+
+.load-more-pokemon-button{
+    position: absolute;
+    bottom: 0;
+    color: white;
+    font-size: 1.3em;
+    text-shadow: 0px 0px 5px #000000, 0px 0px 5px rgba(0, 0, 0, 0.5);
+    background-color: #555555;
+    border: 3px solid rgb(211, 7, 7);
+    border-radius: 12px;
+    border-style: ridge;
+    box-shadow: 0px 1px 2px 1px rgb(63, 63, 63);
+    cursor: pointer;
+    margin: 37px;
+    padding: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.search-container{
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.search-field{
+    width: 400px;
+    color: rgba(56, 56, 56, 0.8);
+    font-size: 1em;
+    font-weight: 600;
+    font-style: italic;
+    background-color: rgb(224, 241, 255);
+    border: 3px solid rgb(211, 7, 7);
+    border-radius: 12px;
+    border-style: ridge;
+    outline: 0;
+    -webkit-box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.6), 0px 2px 5px 2px rgba(0, 0, 0, 0.6);
+    cursor: text;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+}
+
+.search-field::placeholder{
+    color: rgba(56, 56, 56, 0.6);
+    font-size: 1em;
+    font-weight: 600;
+    font-style: italic;
 }
 
 @media (max-width: 700px) {
