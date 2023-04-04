@@ -54,7 +54,7 @@ function loadAllCards(x) {
     let numberPokemonRight = x + 1;
     loadPokemonDetailsFromJSON(numberPokemonRight, right);
     if(x - 1 == currentLoadedPokemon){
-        loadMore();
+        loadOneMorePokemon();
     }
 }
 

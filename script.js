@@ -154,18 +154,27 @@ function stopProp() {
     event.stopPropagation();
 }
 
-function loadMore(){
+function loadFiftyMorePokemon() {
     let pokemonsToLoad = currentLoadedPokemon + 50;
     loadPokemonData(currentLoadedPokemon, pokemonsToLoad);
 }
 
+function loadOneMorePokemon() {
+    let pokemonsToLoad = currentLoadedPokemon + 1;
+    loadPokemonData(currentLoadedPokemon, pokemonsToLoad);
+}
+
+/// ToDo
+
 // function filterPokemon() {
-//         let search = document.getElementById('search').value;
-//         search = search.toLowerCase();
-//         for (let i = 0; i < pokemonArray.length; i++) {
-//                 const name = pokemonArray[i]['name'];
-//                 if(name.toLowerCase().includes(search)){
-//                     loadPokemonData(i, i);
-//                     }
-//                 }
-//             }
+//     let content = document.getElementById('mainContent');
+//     content.innerHTML = '';
+//     let search = document.getElementById('search').value;
+//     search = search.toLowerCase();
+//     for (let i = 0; i < pokemonArray.length; i++) {
+//         const name = pokemonArray[i]['name'];
+//         if (name.toLowerCase().includes(search)) {
+//             loadPokemonData(i, 5);
+//         }
+//     }
+// }

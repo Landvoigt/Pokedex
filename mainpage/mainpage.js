@@ -63,7 +63,7 @@ function loadPokemonData(pokemonsLoaded, pokemonsToLoad) {
     }
     let loadPokemonButton = document.getElementById('mainContent');
     loadPokemonButton.innerHTML += `
-        <button class="load-more-pokemon-button" onclick="loadMore()">load next 50 Pokemon</button>
+        <button class="load-more-pokemon-button" onclick="loadFiftyMorePokemon()">load next 50 Pokemon</button>
         `;
 }
 
