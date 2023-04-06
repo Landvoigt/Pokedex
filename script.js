@@ -175,6 +175,7 @@ function filterPokemon() {
     content.innerHTML = '';
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
+    window.scrollTo(0, 0);
     for (let i = 0; i < pokemonArray.length; i++) {
         const name = pokemonArray[i]['name'];
         if (name.toLowerCase().includes(search)) {

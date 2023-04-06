@@ -389,8 +389,8 @@
     }
 
     .big-poke-card {
-        height: 590px;
-        width: 373px;
+        height: 580px;
+        width: 366px;
     }
 
     .big-poke-card-left {
@@ -422,5 +422,27 @@
 
     .links {
         padding-bottom: 0 !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .big-card-window {
+        align-items: flex-end;
+    }
+
+    .big-card-window-content {
+        margin-bottom: 0;
+    }
+
+    .big-poke-card-container {
+        margin-top: 0;
+    }
+
+    .arrow-container {
+        margin-top: 18px;
+    }
+
+    .m-t-25 {
+        margin-top: 3px !important;
     }
 }

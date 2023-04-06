@@ -37,9 +37,12 @@
     <div class="logo-container">
         <img src="./img/icons/pokedex_logo.png" class="logo" onclick="showMainpage()">
     </div>
-    <div class="search-container">
-        <input type="text" id="search" class="search-field" placeholder="...type pokemon name" minlength="3" required>
-        <button class="search-btn" onclick="filterPokemon()">Search</button>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <div class="search-container">
+            <input type="text" id="search" class="search-field" placeholder="...type pokemon name" minlength="3"
+                required>
+            <button class="search-btn" onclick="filterPokemon()">Search</button>
+        </div>
     </div>
     <div id="mainContent" class="main-content">
 
