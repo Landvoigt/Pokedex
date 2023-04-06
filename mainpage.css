@@ -16,6 +16,7 @@ body {
     z-index: 1;
     padding: 22px;
     padding-top: 88px;
+    padding-bottom: 88px;
     padding-bottom: 110px;
     opacity: 1;
     background-image: url('./img/background/pokeball_bg_grey_3.png');
@@ -204,6 +205,10 @@ h3 {
     padding-bottom: 8px;
 }
 
+.load-more-pokemon-button:hover {
+    background-color: #7c7c7c;
+}
+
 .search-container {
     position: fixed;
     top: 0;
@@ -322,6 +327,7 @@ h3 {
     .main-content {
         padding: 8px;
         padding-top: 88px;
+        padding-bottom: 88px;
         padding-left: 0;
         padding-right: 0;
     }
@@ -340,7 +346,6 @@ h3 {
         font-size: 0.8em;
         padding-left: 6px;
         padding-right: 0;
-        margin-left: 90px;
     }
 
     .search-btn {
