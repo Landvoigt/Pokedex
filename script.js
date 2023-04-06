@@ -166,15 +166,38 @@ function loadOneMorePokemon() {
 
 /// ToDo
 
-// function filterPokemon() {
-//     let content = document.getElementById('mainContent');
-//     content.innerHTML = '';
-//     let search = document.getElementById('search').value;
-//     search = search.toLowerCase();
-//     for (let i = 0; i < pokemonArray.length; i++) {
-//         const name = pokemonArray[i]['name'];
-//         if (name.toLowerCase().includes(search)) {
-//             loadPokemonData(i, 5);
-//         }
-//     }
-// }
+function filterPokemon() {
+    let content = document.getElementById('mainContent');
+    content.innerHTML = '';
+    let search = document.getElementById('search').value;
+    search = search.toLowerCase();
+    for (let i = 0; i < pokemonArray.length; i++) {
+        const name = pokemonArray[i]['name'];
+        if (name.toLowerCase().includes(search)) {
+            loadPokemonData2(i);
+        }
+    }
+}
+
+
+function loadPokemonData2(i) {
+        let pokemonData = pokemonArray[x];
+        let name = pokemonData['name'];
+        let index = pokemonData['index'];
+        let pic = pokemonData['picSRC'];
+        let type_1 = pokemonData['type1'];
+        let type_2 = pokemonData['type2'];
+        let typecolor_1 = pokemonData['typecolor1'];
+        let typecolor_2 = pokemonData['typecolor2'];
+        if (type_2 == 0) {
+            renderPokemonWithOneType(name, index, pic, type_1, typecolor_1, x);
+        }
+        else {
+            renderPokemonWithTwoTypes(name, index, pic, type_1, type_2, typecolor_1, typecolor_2, x);
+        }
+        currentLoadedPokemon = x + 1;
+    let loadPokemonButton = document.getElementById('mainContent');
+    loadPokemonButton.innerHTML += `
+        <button class="load-more-pokemon-button" onclick="loadFiftyMorePokemon()">load next 50 Pokemon</button>
+        `;
+}
