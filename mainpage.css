@@ -185,7 +185,7 @@ h3 {
     mask: var(--mask);
 }
 
-.load-more-pokemon-button{
+.load-more-pokemon-button {
     position: absolute;
     bottom: 0;
     color: white;
@@ -203,7 +203,7 @@ h3 {
     padding-bottom: 8px;
 }
 
-.search-container{
+.search-container {
     position: fixed;
     top: 0;
     z-index: 10;
@@ -215,39 +215,113 @@ h3 {
     margin-top: 25px;
 }
 
-.search-field{
-    width: 400px;
+.search-field {
+    width: 350px;
     color: rgba(56, 56, 56, 0.8);
     font-size: 1em;
     font-weight: 600;
     font-style: italic;
-    background-color: rgb(224, 241, 255);
-    /* border: 3px solid rgb(211, 7, 7); */
+    background-color: rgb(235, 246, 255);
     border-radius: 12px;
-    /* border-style: ridge; */
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
     outline: 0;
-    -webkit-box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.6);
-    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.6), 0px 2px 5px 2px rgba(0, 0, 0, 0.6);
+    border: 2px solid black;
+    border-style: outset;
+    /* -webkit-box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.6), 0px 2px 5px 2px rgba(0, 0, 0, 0.6); */
     cursor: text;
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 12px;
+    border-right: 0;
 }
 
-.search-field::placeholder{
+.search-btn {
+    color: white;
+    letter-spacing: 0.3px;
+    font-style: italic;
+    text-shadow:
+        0px 0px 5px #000000,
+        0px 0px 5px rgba(0, 0, 0, 0.5),
+        0px 0px 5px rgba(0, 0, 0, 0.5);
+    font-size: 1em;
+    font-weight: 600;
+    background-color: rgb(198, 227, 253);
+    border-radius: 12px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    outline: 0;
+    border: 2px solid black;
+    border-style: outset;
+    cursor: text;
+    padding-top: 9px;
+    padding-bottom: 7px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-left: 0;
+}
+
+.search-btn:hover {
+    background-color: #7fccff;
+    cursor: pointer;
+}
+
+.search-field::placeholder {
     color: rgba(56, 56, 56, 0.6);
     font-size: 1em;
     font-weight: 600;
     font-style: italic;
 }
 
+.logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.logo {
+    height: 85px;
+    width: 85px;
+    filter: brightness(105%);
+    transform: rotate(-10deg);
+}
+
+.logo:hover {
+    filter: brightness(125%);
+    animation: jump 0.25s infinite ease-in-out;
+    cursor: pointer;
+}
+
+@keyframes jump{
+    0% {
+        -webkit-transform: rotate(0deg);
+      }
+      25% {
+        -webkit-transform: rotate(-20deg);
+      }
+      50% {
+        -webkit-transform: rotate(-5deg);
+      }
+      75% {
+        -webkit-transform: rotate(-20deg);
+      }
+      100% {
+        -webkit-transform: rotate(-5deg);
+      }
+}
+
 @media (max-width: 700px) {
-    .main-content{
+    .main-content {
         padding: 8px;
         padding-left: 0;
         padding-right: 0;
     }
-    .poke-card{
+
+    .poke-card {
         margin: 8px;
     }
 }

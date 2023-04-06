@@ -93,6 +93,7 @@ let types = [
 ]
 let pokemonArray = [];
 let currentLoadedPokemon;
+let pokemonSearch = false;
 
 async function loadPokedex() {
     pokemonArray.length = 0;
@@ -101,10 +102,8 @@ async function loadPokedex() {
         let response = await fetch(pokemonURL);
         pokemon = await response.json();
         loadVariables(pokemon, x);
-        if (x == 100) {
-            let pokemonsLoaded = 0;
-            let pokemonsToLoad = 100;
-            loadPokemonData(pokemonsLoaded, pokemonsToLoad);
+        if (x == 50) {
+            loadPokemonFromOwnJSON(0, 50);
             showStartButton();
         }
     }
@@ -156,15 +155,20 @@ function stopProp() {
 
 function loadFiftyMorePokemon() {
     let pokemonsToLoad = currentLoadedPokemon + 50;
-    loadPokemonData(currentLoadedPokemon, pokemonsToLoad);
+    loadPokemonFromOwnJSON(currentLoadedPokemon, pokemonsToLoad);
 }
 
 function loadOneMorePokemon() {
     let pokemonsToLoad = currentLoadedPokemon + 1;
-    loadPokemonData(currentLoadedPokemon, pokemonsToLoad);
+    loadPokemonFromOwnJSON(currentLoadedPokemon, pokemonsToLoad);
 }
 
-/// ToDo
+function showMainpage() {
+    pokemonSearch = false;
+    let content = document.getElementById('mainContent');
+    content.innerHTML = '';
+    loadPokemonFromOwnJSON(0, 50);
+}
 
 function filterPokemon() {
     let content = document.getElementById('mainContent');
@@ -174,30 +178,10 @@ function filterPokemon() {
     for (let i = 0; i < pokemonArray.length; i++) {
         const name = pokemonArray[i]['name'];
         if (name.toLowerCase().includes(search)) {
-            loadPokemonData2(i);
+            pokemonSearch = true;
+            loadPokemonData(i);
+            currentLoadedPokemon = 1;
+            document.getElementById('search').value = '';
         }
     }
-}
-
-
-function loadPokemonData2(i) {
-        let pokemonData = pokemonArray[x];
-        let name = pokemonData['name'];
-        let index = pokemonData['index'];
-        let pic = pokemonData['picSRC'];
-        let type_1 = pokemonData['type1'];
-        let type_2 = pokemonData['type2'];
-        let typecolor_1 = pokemonData['typecolor1'];
-        let typecolor_2 = pokemonData['typecolor2'];
-        if (type_2 == 0) {
-            renderPokemonWithOneType(name, index, pic, type_1, typecolor_1, x);
-        }
-        else {
-            renderPokemonWithTwoTypes(name, index, pic, type_1, type_2, typecolor_1, typecolor_2, x);
-        }
-        currentLoadedPokemon = x + 1;
-    let loadPokemonButton = document.getElementById('mainContent');
-    loadPokemonButton.innerHTML += `
-        <button class="load-more-pokemon-button" onclick="loadFiftyMorePokemon()">load next 50 Pokemon</button>
-        `;
 }

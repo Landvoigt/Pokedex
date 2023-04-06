@@ -20,11 +20,11 @@
 </head>
 
 <body id="body" onload="loadPokedex()" class="overflow">
-    <div id="frontPageUndergroundMobileTop" class="front-page-underground-mobile-top">
+    <div id="frontPageUndergroundMobileTop" class="front-page-underground-mobile-top d-none">
     </div>
-    <div id="frontPageUndergroundMobileBottom" class="front-page-underground-mobile-bottom">
+    <div id="frontPageUndergroundMobileBottom" class="front-page-underground-mobile-bottom d-none">
     </div>
-    <div id="frontPageTop" class="frontpage-container fp-top">
+    <div id="frontPageTop" class="frontpage-container fp-top d-none">
         <div class="start-button-box">
             <div id="loadingSymbol" class="loading"></div>
             <div id="startButton" class="start-btn d-none" role="button" onclick="showStartAnimation()">
@@ -32,13 +32,14 @@
             </div>
         </div>
     </div>
-    <div id="frontPageBottom" class="frontpage-container fp-bottom">
+    <div id="frontPageBottom" class="frontpage-container fp-bottom d-none">
+    </div>
+    <div class="logo-container">
+        <img src="./img/icons/pokedex_logo.png" class="logo" onclick="showMainpage()">
     </div>
     <div class="search-container">
-        <!-- <div style="position: sticky; top: 0; height: 100px"> -->
-            <input type="input" id="search" class="search-field" placeholder="...type pokemon name"></input>
-            <button onclick="filterPokemon()"></button>
-        <!-- </div> -->
+        <input type="text" id="search" class="search-field" placeholder="...type pokemon name" minlength="3" required>
+        <button class="search-btn" onclick="filterPokemon()">Search</button>
     </div>
     <div id="mainContent" class="main-content">
 

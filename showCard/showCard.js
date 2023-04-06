@@ -1,5 +1,11 @@
 function loadBigPokemonCards(x) {
     document.getElementById(`bigCardWindow`).classList.remove('d-none');
+    if (pokemonSearch == true) {
+        loadOnlyMainCard(x);
+        hideLeftArrow();
+        hideRightArrow();
+        return
+    }
     if (x == 0) {
         hideBigLeftCard(x);
         hideLeftArrow();
@@ -41,6 +47,18 @@ function hideBigRightCard(x) {
     loadPokemonDetailsFromJSON(numberPokemonMiddle, main);
 }
 
+function loadOnlyMainCard(x) {
+    let left = document.getElementById(`bigCardLeft`);
+    left.innerHTML = '';
+    left.classList.add('d-none');
+    let right = document.getElementById('bigCardRight');
+    right.innerHTML = '';
+    right.classList.add('d-none');
+    let main = document.getElementById(`bigCardMain`);
+    let numberPokemonMiddle = x;
+    loadPokemonDetailsFromJSON(numberPokemonMiddle, main);
+}
+
 function loadAllCards(x) {
     document.getElementById('bigCardLeft').classList.remove('d-none');
     let left = document.getElementById(`bigCardLeft`);
@@ -53,7 +71,7 @@ function loadAllCards(x) {
     let right = document.getElementById(`bigCardRight`);
     let numberPokemonRight = x + 1;
     loadPokemonDetailsFromJSON(numberPokemonRight, right);
-    if(x - 1 == currentLoadedPokemon){
+    if (x - 1 == currentLoadedPokemon) {
         loadOneMorePokemon();
     }
 }
