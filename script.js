@@ -105,6 +105,7 @@ async function loadPokedex() {
         if (x == 50) {
             loadPokemonFromOwnJSON(0, 50);
             showStartButton();
+            identifySearchButton();
         }
     }
 }
@@ -170,19 +171,33 @@ function showMainpage() {
     loadPokemonFromOwnJSON(0, 50);
 }
 
+function identifySearchButton() {
+    let input = document.getElementById('search');
+    let button = document.getElementById('button');
+    button.disabled = true;
+    input.addEventListener("change", filterPokemon);
+}
+
 function filterPokemon() {
-    let content = document.getElementById('mainContent');
-    content.innerHTML = '';
-    let search = document.getElementById('search').value;
-    search = search.toLowerCase();
-    window.scrollTo(0, 0);
-    for (let i = 0; i < pokemonArray.length; i++) {
-        const name = pokemonArray[i]['name'];
-        if (name.toLowerCase().includes(search)) {
-            pokemonSearch = true;
-            loadPokemonData(i);
-            currentLoadedPokemon = 1;
-            document.getElementById('search').value = '';
+    let input = document.getElementById('search');
+    let button = document.getElementById('button');
+    if (input.value === "") {
+        button.disabled = true;
+    } else {
+        button.disabled = false;
+        let content = document.getElementById('mainContent');
+        content.innerHTML = '';
+        let search = document.getElementById('search').value;
+        search = search.toLowerCase();
+        window.scrollTo(0, 0);
+        for (let i = 0; i < pokemonArray.length; i++) {
+            const name = pokemonArray[i]['name'];
+            if (name.toLowerCase().includes(search)) {
+                pokemonSearch = true;
+                loadPokemonData(i);
+                currentLoadedPokemon = 1;
+                document.getElementById('search').value = '';
+            }
         }
     }
 }

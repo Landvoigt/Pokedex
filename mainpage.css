@@ -1,7 +1,10 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: 'Gantari', sans-serif;
-    scroll-behavior: smooth;
 }
 
 .main-content {
@@ -327,7 +330,7 @@ h3 {
     .main-content {
         padding: 8px;
         padding-top: 88px;
-        padding-bottom: 88px;
+        padding-bottom: 108px;
         padding-left: 0;
         padding-right: 0;
     }
@@ -356,5 +359,14 @@ h3 {
 
     .poke-card {
         margin: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    .load-more-pokemon-button {
+        font-size: 1em;
+        padding: 20px;
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 }
